@@ -90,6 +90,7 @@ CALC_LANE_CENTER_OFFSET=True
 CALC_STOP_DISTANCE=False
 PLOT_LANE_CENTER_OFFSET=True
 PLOT_STOP_DISTANCE=False
+```
 
 # 🚀 Usage Guide
 
@@ -112,6 +113,7 @@ Install dependencies using:
 
 ```bash
 pip install tensorflow matplotlib numpy
+```
 
 # 📊 Metrics Description
 
@@ -219,3 +221,4 @@ If you use or extend this tool in academic work, please cite it as:
   note      = {Available via Mobolity Lab internal repository},
   howpublished = {\url{https://github.com/haohuaque/waymo-motion-extract}}
 }
+```
