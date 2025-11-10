@@ -209,7 +209,7 @@ If you use or extend this tool in academic work, please cite it as:
 ```bibtex
 @misc{que2025waymoextract,
   title     = {Waymo Motion Dataset Extraction and Visualization Tool},
-  author    = {Haohua Que},
+  author    = {Haohua Que, Handong Yao},
   year      = {2025},
   note      = {Available via Mobolity Lab internal repository},
   howpublished = {\url{https://github.com/haohuaque/waymo-motion-extract}}
