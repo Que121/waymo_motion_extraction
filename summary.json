@@ -1,0 +1,315 @@
+[
+  {
+    "filename": "training_tfexample.tfrecord-00000-of-01000",
+    "segment_indices": [
+      250
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00008-of-01000",
+    "segment_indices": [
+      20
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00023-of-01000",
+    "segment_indices": [
+      356
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00041-of-01000",
+    "segment_indices": [
+      225
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00065-of-01000",
+    "segment_indices": [
+      344
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00076-of-01000",
+    "segment_indices": [
+      151
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00105-of-01000",
+    "segment_indices": [
+      285
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00112-of-01000",
+    "segment_indices": [
+      443
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00119-of-01000",
+    "segment_indices": [
+      64
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00123-of-01000",
+    "segment_indices": [
+      398
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00124-of-01000",
+    "segment_indices": [
+      345
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00134-of-01000",
+    "segment_indices": [
+      89
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00177-of-01000",
+    "segment_indices": [
+      172
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00190-of-01000",
+    "segment_indices": [
+      1
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00199-of-01000",
+    "segment_indices": [
+      381
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00222-of-01000",
+    "segment_indices": [
+      332
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00256-of-01000",
+    "segment_indices": [
+      128
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00395-of-01000",
+    "segment_indices": [
+      132
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00402-of-01000",
+    "segment_indices": [
+      52
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00625-of-01000",
+    "segment_indices": [
+      209
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00690-of-01000",
+    "segment_indices": [
+      356
+    ]
+  },
+  {
+    "filename": "training_tfexample.tfrecord-00895-of-01000",
+    "segment_indices": [
+      15
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00001-of-00150",
+    "segment_indices": [
+      64
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00004-of-00150",
+    "segment_indices": [
+      174,
+      205
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00009-of-00150",
+    "segment_indices": [
+      101
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00011-of-00150",
+    "segment_indices": [
+      46
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00017-of-00150",
+    "segment_indices": [
+      27
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00020-of-00150",
+    "segment_indices": [
+      139
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00028-of-00150",
+    "segment_indices": [
+      134
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00030-of-00150",
+    "segment_indices": [
+      245
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00032-of-00150",
+    "segment_indices": [
+      210
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00033-of-00150",
+    "segment_indices": [
+      275
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00045-of-00150",
+    "segment_indices": [
+      284
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00050-of-00150",
+    "segment_indices": [
+      15
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00051-of-00150",
+    "segment_indices": [
+      185
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00065-of-00150",
+    "segment_indices": [
+      49
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00067-of-00150",
+    "segment_indices": [
+      207
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00068-of-00150",
+    "segment_indices": [
+      27
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00069-of-00150",
+    "segment_indices": [
+      150
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00072-of-00150",
+    "segment_indices": [
+      149
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00077-of-00150",
+    "segment_indices": [
+      273
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00078-of-00150",
+    "segment_indices": [
+      142
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00080-of-00150",
+    "segment_indices": [
+      115
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00083-of-00150",
+    "segment_indices": [
+      0
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00084-of-00150",
+    "segment_indices": [
+      152
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00090-of-00150",
+    "segment_indices": [
+      228
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00104-of-00150",
+    "segment_indices": [
+      139
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00109-of-00150",
+    "segment_indices": [
+      130
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00111-of-00150",
+    "segment_indices": [
+      87
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00122-of-00150",
+    "segment_indices": [
+      175
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00138-of-00150",
+    "segment_indices": [
+      1
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00141-of-00150",
+    "segment_indices": [
+      61
+    ]
+  }
+]
