@@ -36,6 +36,7 @@ project_root/
 │   ├── lane_center_offset_boxplot.png     # Boxplot for lane offset
 │   └── dist_to_stop_boxplot.png           # Boxplot for stop distance
 └── README.md                              # This document
+```
 
 # ⚙️ Configuration Guide
 
@@ -199,14 +200,6 @@ When plotting (if `EXPORT_SCENE_PNG=True`):
 Affiliations: **University of Georgia (UGA)**  
 Research Focus: **Autonomous Driving, BEV Perception, Robotics Exploration, Agricultural AI**  
 Email: *[hq10606@uga.edu]*  
----
-
-## 🙏 Acknowledgements
-
-- **Waymo Open Motion Dataset** — for providing open high-quality motion & map data.  
-- **TensorFlow** — used for efficient TFRecord data access.  
-- **Matplotlib & NumPy** — used for all visualization and numerical analysis.  
-- **CR2C2 Lab** — for computing resources and collaborative research support.
 ---
 
 ## 🧾 Citation
