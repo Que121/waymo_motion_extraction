@@ -8,18 +8,18 @@ from matplotlib.lines import Line2D
 from tensorflow.core.example import example_pb2
 
 # ========== 配置 ==========
-JSON_PATH = "./stop_radius_direction_consensus.json"
-TFREC_DIR = "/mnt/home/Files/Lab/waymo_motion/dataset/"
-OUT_DIR   = "./extract_out_stop_signs/"
+JSON_PATH = "./summary.json"
+TFREC_DIR = "/mnt/nas/Files/Lab/waymo_motion/dataset/"
+OUT_DIR   = "./extract_out/"
 EXPORT_STOP_SIGN_INTERACTIONS = False
 STOP_SIGN_INTERACTION_JSON = os.path.join(OUT_DIR, "stop_sign_interactions.json")
 EXPORT_STOP_RADIUS_DIRECTION_JSON = False
 STOP_RADIUS_DIRECTION_JSON = os.path.join(OUT_DIR, "stop_radius_direction_consensus.json")
 STOP_RADIUS_LANE_DIRECTION_TOL_DEG = 10.0
 STOP_RADIUS_LANE_DIRECTION_TOL_RAD = math.radians(STOP_RADIUS_LANE_DIRECTION_TOL_DEG)
-EXPORT_AV_MIN_SPEED_IN_RADIUS = True
+EXPORT_AV_MIN_SPEED_IN_RADIUS = False
 AV_MIN_SPEED_CSV = os.path.join(OUT_DIR, "av_min_speed_in_radius.csv")
-PLOT_AV_STOP_SPEED_DISTRIBUTION = True
+PLOT_AV_STOP_SPEED_DISTRIBUTION = False
 STOP_SPEED_THRESHOLD_MPS = 0.5
 AV_STOP_SPEED_PNG = os.path.join(OUT_DIR, "av_stop_speed_distribution.png")
 
@@ -28,15 +28,15 @@ ONLY_VEHICLES   = True
 XLIM = (-120, 120)
 YLIM = (-120, 120)
 
-EXPORT_HV_CSV = True
-EXPORT_AV_CSV = True
+EXPORT_HV_CSV = False
+EXPORT_AV_CSV = False
 EXPORT_SCENE_PNG = True
-EXPORT_STOP_RADIUS_TABLE = True
+EXPORT_STOP_RADIUS_TABLE = False
 STOP_RADIUS_TABLE_CSV = os.path.join(OUT_DIR, "stop_radius_distances.csv")
 
 # Metrics toggles
-CALC_STOP_DISTANCE = True
-PLOT_STOP_DISTANCE = True
+CALC_STOP_DISTANCE = False
+PLOT_STOP_DISTANCE = False
 
 # Lane center offset metrics
 CALC_LANE_CENTER_OFFSET = False
@@ -576,21 +576,17 @@ def draw_one_sample(ex, base_name, ex_idx, hv_writer=None, av_writer=None, case_
         for pts in lane_segments.values():
             Xw,Yw = pts[:,0], pts[:,1]
             X,Y = world_to_local_xy(Xw,Yw,x0,y0,yaw0) if np.any(is_av) else (Xw,Yw)
-            ax.plot(X,Y,color=COLOR_MAP["lanes"],linewidth=0.6,alpha=0.8,zorder=0)
+            ax.plot(
+                X,
+                Y,
+                color=COLOR_MAP["lanes"],
+                linewidth=0.6,
+                linestyle=":",
+                alpha=0.8,
+                zorder=0,
+            )
         if stop_local is not None:
             ax.scatter([stop_local[0]],[stop_local[1]], s=36, c=COLOR_MAP["stops"], marker="o", zorder=6)
-            if STOP_DISTANCE_RADIUS is not None:
-                circle = plt.Circle(
-                    (stop_local[0], stop_local[1]),
-                    STOP_DISTANCE_RADIUS,
-                    edgecolor=COLOR_MAP["stops"],
-                    facecolor="none",
-                    linewidth=1.2,
-                    linestyle="--",
-                    alpha=0.7,
-                    zorder=5,
-                )
-                ax.add_patch(circle)
 
     # 4) 逐 agent 写 CSV（仅记录最终停下时的 dist_to_stop & lane_center_offset），并画轨迹/箭头
     scenario_key = f"{base_name}_ex{ex_idx:05d}"
@@ -752,20 +748,34 @@ def draw_one_sample(ex, base_name, ex_idx, hv_writer=None, av_writer=None, case_
         is_av_i = bool(is_av[i])
         X = xs_loc[i,vidx]; Y = ys_loc[i,vidx]
         if EXPORT_SCENE_PNG:
-            ax.plot(X,Y, linewidth=(2.4 if is_av_i else 1.2),
-                    color=(COLOR_MAP["av"] if is_av_i else COLOR_MAP["hv"]),
-                    alpha=1.0 if is_av_i else 0.85, zorder=(10 if is_av_i else 6))
-            if DRAW_DIR_ARROWS:
-                cx=float(cur_x_loc[i]); cy=float(cur_y_loc[i])
-                vx=float(vx_loc[i]);    vy=float(vy_loc[i])
-                if np.isfinite(cx) and np.isfinite(cy) and np.hypot(vx,vy)>1e-3:
-                    n=(vx*vx+vy*vy)**0.5; dx=(vx/n)*ARROW_LEN; dy=(vy/n)*ARROW_LEN
-                    ax.arrow(cx,cy,dx,dy, length_includes_head=True,
-                             head_width=ARROW_LEN*0.25, head_length=ARROW_LEN*0.35,
-                             linewidth=(2.0 if is_av_i else 1.2),
-                             color=(COLOR_MAP["av"] if is_av_i else COLOR_MAP["hv"]),
-                             alpha=1.0 if is_av_i else 0.9, width=ARROW_WIDTH,
-                             zorder=(12 if is_av_i else 8))
+            traj_color = COLOR_MAP["av"] if is_av_i else COLOR_MAP["hv"]
+            traj_width = 2.4 if is_av_i else 1.2
+            traj_style = "-" if is_av_i else "--"
+            ax.plot(
+                X,
+                Y,
+                linewidth=traj_width,
+                color=traj_color,
+                linestyle=traj_style,
+                alpha=1.0 if is_av_i else 0.85,
+                zorder=(10 if is_av_i else 6),
+            )
+            if DRAW_DIR_ARROWS and len(X) >= 2:
+                arrow_start = (X[-2], Y[-2])
+                arrow_end = (X[-1], Y[-1])
+                if np.all(np.isfinite(arrow_start)) and np.all(np.isfinite(arrow_end)):
+                    ax.annotate(
+                        "",
+                        xy=arrow_end,
+                        xytext=arrow_start,
+                        arrowprops=dict(
+                            arrowstyle="->",
+                            color=traj_color,
+                            lw=traj_width,
+                            alpha=1.0 if is_av_i else 0.9,
+                        ),
+                        zorder=(12 if is_av_i else 8),
+                    )
         
         if is_av_i:
             events, stop_evt = process_agent(av_writer, True, i, vidx, scenario_key, forward_dir)
@@ -811,13 +821,12 @@ def draw_one_sample(ex, base_name, ex_idx, hv_writer=None, av_writer=None, case_
             )
         ax.set_xlim(*XLIM); ax.set_ylim(*YLIM)
         ax.set_xticks([]); ax.set_yticks([])
-        ax.set_title(f"{base_name} ex{ex_idx} (AV/HV + stop sign + directions)", fontsize=10)
+        ax.set_title(f"{base_name} ex{ex_idx} (AV/HV + stop sign)", fontsize=10)
         legend = [
-            Line2D([0],[0], color=COLOR_MAP["lanes"], lw=1.2, label="lane/roadgraph"),
-            Line2D([0],[0], color=COLOR_MAP["av"], lw=2.4, label="AV trajectory"),
-            Line2D([0],[0], color=COLOR_MAP["hv"], lw=1.2, label="HV trajectories"),
+            Line2D([0],[0], color=COLOR_MAP["lanes"], lw=1.2, linestyle=":", label="lane/roadgraph"),
+            Line2D([0],[0], color=COLOR_MAP["av"], lw=2.4, linestyle="-", label="Waymo trajectory"),
+            Line2D([0],[0], color=COLOR_MAP["hv"], lw=1.2, linestyle="--", label="Background vehicle trajectory"),
             Line2D([0],[0], marker='o', color='w', markerfacecolor=COLOR_MAP["stops"], markersize=6, label="stop sign"),
-            Line2D([0],[0], color='k', lw=0, marker=r'$\rightarrow$', label="direction"),
         ]
         if EXPORT_AV_MIN_SPEED_IN_RADIUS and av_min_speed_event is not None:
             legend.append(

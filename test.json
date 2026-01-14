@@ -1,0 +1,14 @@
+[
+  {
+    "filename": "training_tfexample.tfrecord-00000-of-01000",
+    "segment_indices": [
+      250
+    ]
+  },
+  {
+    "filename": "validation_tfexample.tfrecord-00141-of-00150",
+    "segment_indices": [
+      61
+    ]
+  }
+]
